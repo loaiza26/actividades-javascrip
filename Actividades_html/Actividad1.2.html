@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 1.2</title>
+</head>
+<body>
+<h1>calculadora</h1>
+    <input type="text" id="num1" placeholder="Ingresa el primer número">
+    <select id="operacion">
+        <option value="sumar">+</option>
+        <option value="restar">-</option>
+        <option value="multiplicar">*</option>
+        <option value="dividir">/</option>
+    </select>
+    <input type="text" id="num2" placeholder="Ingresa el segundo número" >
+    <button type="button" onclick="calcular()">Calcular</button>
+    <p id="resultado"></p>
+    
+    <script >
+        //En este caso => representa una flecha
+        const sumar = (a,b) => /*la función flecha es una forma abreviada de definir funciones) */ a + b;//En esta linea le decimos a la variable que sea una suma
+        const restar = (a,b) => a - b;//En esta linea le decimos 
+        const multiplicar = (a,b) => a * b;//
+        const dividir = (a,b)/* Aqui en los parentesis estamos definiendo los parámetros de la función */ => {
+            if (b === 0)/* ===(esto significa igualdad estricta)*/{//Le espesificamos que el  divisor que no se pude divir por cero
+                return "No se pude dividir por 0";//
+            }
+            return a / b;
+        
+        }
+        function calcular(){//En esta funcion le decimos que el resultado de la operacion se muestre 
+        const num1 = Number(document.getElementById("num1").value)//num1 es igual al valor que se ingresa en el input
+        const num2 = Number(document.getElementById("num2").value);
+        const operacion = document.getElementById("operacion").value;//estamos obteniendo el valor de la operacion seleccionada en el select
+        let resultado;
+        if (operacion === "sumar"){
+            resultado = sumar(num1, num2);
+        } else if (operacion === "restar"){
+            resultado = restar(num1, num2);
+        } else if (operacion === "multiplicar"){
+            resultado = multiplicar(num1, num2);
+        } else if (operacion === "dividir"){
+            resultado = dividir(num1, num2);
+        }
+        document.getElementById("resultado").innerText = `El resultado es: ${resultado}`;
+
+    }
+    </script>
+</body>
+</html>

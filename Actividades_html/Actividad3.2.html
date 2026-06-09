@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Estilos_CSS/estilo_3.2.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>CARRITO DE COMPRAS</h1>
+    <section class="contenedor">
+        <input type="text" id="nombre" placeholder="Nombre del produncto">
+        <input type="number" name="los-PRECIOS" id="precio" placeholder="Precio">
+        <button type="button" onclick="agregar()">Agregar Producto</button>
+
+        <input type="number" id="descuento" placeholder="% de descuento">
+        <button type="button" onclick="aplicarDesc()">Aplicar descuento</button>
+        <p id="totalDescuento"></p>
+
+        <ul id="listaProductos"></ul>
+        <p id="total">Total a Pagar</p>
+    </section>
+    <script src="actividad3.2.js"></script>
+</body>
+</html>

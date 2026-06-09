@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Función con rest parameters</h1>
+    
+    <script>
+        function estadisticas(...numeros){
+            if (numeros.length == 0){
+                return null;
+            }
+            const suma = numeros.reduce((acc /*el acumulador */, num) => acc + num, 0);
+            const promedio = suma / numeros.length/*el length nos sirve para
+             obtener la cantidad de elementos del array(significa la cantidad de elementos)  */;
+            const maximo = Math.max(...numeros);
+            const minimo = Math.min(...numeros);
+            return { suma, promedio, maximo,minimo };
+        }
+        const numeros = prompt("Ingresa una lista de numeros que se separen por comas").split/*es para romper o devidir ese texto en varias partes*/(",").map/* */(Number);
+        const resultado = estadisticas(...numeros);//
+        const verResultado = confirm("¿Deseas ver el resultado?");
+        if (verResultado) {
+            alert(`suma: ${resultado.suma}, promedio: ${resultado.promedio}, maximo: ${resultado.maximo}, minimo: ${resultado.minimo}`);
+        }
+        console.log(resultado);
+    </script>
+</body>
+</html>

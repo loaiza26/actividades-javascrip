@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>password</h1>
+    <input type="password" name="" id="">  
+      
+    <button type="button"  id="boton_enviar" onclick="enviar()">Enviar</button>
+    <script>
+
+        function validarPassword(password) {
+            const resultado = {
+                longitudValida: password.length >= 8,//Aqui se comprueba el tamaño de la palabra o caracteres
+                tieneMayuscula: /[A-Z]/.test(password),//esta linea nos ayuda a saber si la contraseña tiene al menos una letra mayuscula
+                tieneNumero: /\d/.test(password),//esta linea nos ayudara a saber si la contraseña tiene al menos un numero
+                tieneEspecial: /[!@#$%&*]/.test(password),//esta linea nos ayuda o sirve para saber si tine un caracter los cuales son !@#$%&*
+            };
+            resultado.esValida = resultado.longitudValida && resultado.tieneMayuscula && resultado.tieneNumero && resultado.tieneEspecial;// esta linea nos ayudara a saber si la contraseña cumple con todos losrequisitos para considerarse valida
+            return resultado;// y aqui se retorna y dice que el resultado es valido
+        }
+    </script>
+</body>
+</html>

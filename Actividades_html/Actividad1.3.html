@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="numero1" placeholder="ingresa un número" >
+    <button onclick="Convertir()">Convertir a Fahrenheit</button>
+    <p id="resultado1">Ver resultado</p>
+
+    <input type="text" id="numero2" placeholder="ingrese un número" >
+    <button type="button"onclick="Convertir()">Convertir a Celcius</button>
+    <p id="resultado2"> Ver resultado</p>
+    <script>
+        /*Esta funcion toma la formula de los grados celcius a fahrenheit (°F) = (°C × 9/5) + 32 */
+        function convertirAfahrenheit(celcius){//Estamos creando la  funcion y su parametro es celcius
+            return (celcius * 9/5) + 32;//
+        }
+        
+        /*Esta funcion toma formula de los grados fahrenheit a celcius (°C) = (°F - 32) × 5/9 */
+        function convertirAcelcius(fahernheit){
+            return (fahernheit - 32) * 5/9;
+        }
+
+        function Convertir(){
+            const numero1 = Number(document.getElementById("numero1").value)//En esta linea le decimos que el valor del numero1 es igual al valor que ingresamos 
+            const numero2 = Number(document.getElementById("numero2").value)//
+            const resultado1 = convertirAfahrenheit(numero1)//En esta linea le decimos que el resultado1 es igual a la funcion convertirAfahrenheit con el parametro numero1
+            const resultado2 = convertirAcelcius(numero2)
+            document.getElementById("resultado1").innerText = `El resultado es ${resultado1} °f`
+            document.getElementById("resultado2").innerText = `El resultado es ${resultado2} °c`
+        }
+   
+    </script>
+    
+</body>
+</html>

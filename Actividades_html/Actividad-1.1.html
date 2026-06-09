@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Preciona F12 para ver el saludo</h1>
+    <p>Ingreasa tu nombre:</p>
+    <input type="text" id="nombre" name="" placeholder="Nombre">
+
+    <p>Ingreasa la hora:</p>
+    <input type="number" id="hora" name="" placeholder="hora">
+
+    <button type="button" onclick="obtenerSaludo()">Saludar</button>
+
+   <p id="resultado"></p>
+   <script>
+     //En esta linea le decimos o le damos un valor ( nombre y hora )
+        function saludoSegunHora(nombre, hora)/*EL parentecis son los parametros */{
+           //En esta condición tomen solo los números entre 0 y 23
+            if (hora >= 0 && hora <=23){
+
+            //Esta condicion toma 5 y 11
+            if (hora >=5  && hora <=11){
+                //Si se cumple mostrara el mensaje
+              return  (`buenos dias ${nombre} son las ${hora} a.m`)
+            }
+            //Esta condicion toma 12 y 18
+            else if (hora >=12 && hora <=18){
+                //si se cumple mostrara el mensaje
+               return (`buenas tardes ${nombre} son las ${hora} p.m`)
+            }
+            //Esta condicion toma 19 y 4
+            else if (hora >=19 || hora <=4){
+                //si se cumple mostrara el mensaje
+              return  (`buenas noches ${nombre} son las ${hora} p.m`)
+            }
+            //Si no se cumple ninguna mostrara Error
+            else {console.log("Error")}
+        } 
+        //En esta condicion le decimo que si un número esat fuera de 0 y 23 nos diga que es no valido
+
+        else {console.log("NO es valido") //EL else nos sirve para terminar las condiciones (es la ultima condicion o sea si lo demas no se cumple
+        document.getElementById("resultado").innerText = "No es valido"
+    }
+    } 
+     function obtenerSaludo(){//
+         const  hora = Number(document.getElementById("hora").value)//En esta linea  le decimos que el valor de hora es igual al valor que se ingresa en el input con  id hora     
+         const nombre = document.getElementById("nombre").value//en esta linea le decimos que el valor de nombre es igual al valor que se ingresa en el input con id nombre
+         document.getElementById("resultado").innerText = saludoSegunHora(nombre, hora)//En esta linea le decimos que el resultado es igual a la funciom saludoSegunHora con los paramentros nombre y hora
+
+     }
+    //
+
+</script>
+</body> 
+</html>

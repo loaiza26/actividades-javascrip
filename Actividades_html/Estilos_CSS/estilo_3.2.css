@@ -1,0 +1,174 @@
+
+:root {
+    --color-principal: #39a900; /* Verde SENA institucional */
+    --color-oscuro: #2f2f2f;
+    --color-fondo: #31ac83;
+    --color-blanco: #f4ecec;
+    --color-error: #e74c3c;
+    --color-borde: #665b5b;
+    --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --radio-borde: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-principal);
+    background-color: var(--color-fondo);
+    color: var(--color-oscuro);
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Título Principal */
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--color-oscuro);
+    letter-spacing: 1px;
+    font-size: 2rem;
+}
+
+/* ==========================================================================
+   2. DISTRIBUCIÓN DEL CONTENEDOR (CSS GRID)
+   ========================================================================== */
+/* Como en tu HTML todo está suelto en el body, lo ideal sería meter los inputs 
+   en un contenedor y la lista en otro. Pero si no quieres tocar el HTML, 
+   podemos darle un diseño de contenedor centrado al body o envolverlo todo en un main.
+   
+   Asumiendo que organizas el flujo, esta es la magia para la estructura: */
+
+.contenedor-principal {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .contenedor-principal {
+        grid-template-columns: 1fr 1fr; /* Dos columnas iguales en PC */
+    }
+}
+
+/* ==========================================================================
+   3. ESTILOS DE LOS COMPONENTES (Inputs y Botones)
+   ========================================================================== */
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-borde);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Efecto Focus para cuando el aprendiz interactúa con el input */
+input:focus {
+    outline: none;
+    border-color: var(--color-principal);
+    box-shadow: 0 0 5px rgba(57, 169, 0, 0.3);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--color-principal);
+    color: var(--color-blanco);
+    border: none;
+    border-radius: var(--radio-borde);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: #2e8600; /* Un verde más oscurito al pasar el mouse */
+}
+
+button:active {
+    transform: scale(0.98); /* Efecto de hundido al darle clic */
+}
+
+/* ==========================================================================
+   4. LISTA DE PRODUCTOS Y TOTALES
+   ========================================================================== */
+#listaProductos {
+    list-style: none;
+    background: var(--color-blanco);
+    padding: 15px;
+    border-radius: var(--radio-borde);
+    box-shadow: var(--sombra);
+    margin-bottom: 20px;
+    max-height: 300px;
+    overflow-y: auto; /* Por si agregan muchos productos, sale scroll */
+}
+
+/* Cada ítem de la lista usando FLEXBOX */
+#listaProductos li {
+    display: flex;
+    justify-content: space-between; /* Texto a la izquierda, botón a la derecha */
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+#listaProductos li:last-child {
+    border-bottom: none;
+}
+
+/* Botón de eliminar específico */
+#listaProductos button {
+    width: auto;
+    padding: 6px 12px;
+    background-color: var(--color-error);
+    margin-bottom: 0;
+    font-size: 0.85rem;
+}
+
+#listaProductos button:hover {
+    background-color: #c0392b;
+}
+
+/* Tarjetas de Totales */
+#total, #totalDescuento {
+    background: var(--color-blanco);
+    padding: 15px;
+    border-radius: var(--radio-borde);
+    box-shadow: var(--sombra);
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 10px;
+}
+
+#total {
+    border-left: 5px solid var(--color-principal);
+}
+
+#totalDescuento {
+    color: #27ae60;
+    font-size: 1rem;
+    border-left: 5px solid #27ae60;
+}
+
+/* Estilo para cuando el mensaje de descuento es de error de validación */
+#totalDescuento:contains("Por favor") {
+    color: var(--color-error);
+    border-left-color: var(--color-error);
+  
+}
+@media screen and (min-width: 768px ) {
+    
+    
+}

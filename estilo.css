@@ -1,0 +1,479 @@
+
+/* ── VARIABLES GLOBALES ── */
+:root {
+  --negro:       #0a0a0a;
+  --oscuro:      #111111;
+  --gris-card:   #1a1a1a;
+  --gris-borde:  #2e2e2e;
+  --blanco:      #f5f5f0;
+  --blanco-muted:#a0a0a0;
+  --oro:         #c9a84c;       /* acento dorado FIFA */
+  --oro-hover:   #e0bf70;
+  --rojo:        #d62828;
+  --radio:       10px;
+  --radio-lg:    16px;
+  --fuente-titulo:'Bebas Neue', sans-serif;
+  --fuente-cuerpo:'DM Sans', sans-serif;
+  --transicion:  0.2s ease;
+}
+
+/* ── RESET BÁSICO ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  background-color: var(--negro);
+  color: var(--blanco);
+  font-family: var(--fuente-cuerpo);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.hero {
+  /* Fondo con patrón de rombos sutil */
+  background-color: var(--oscuro);
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 20px,
+      rgba(201,168,76,0.04) 20px,
+      rgba(201,168,76,0.04) 21px
+    );
+  text-align: center;
+  padding: 3rem 1rem 2.5rem;
+  border-bottom: 1px solid var(--gris-borde);
+}
+
+.hero__badge {
+  display: inline-block;
+  font-family: var(--fuente-cuerpo);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--oro);
+  border: 1px solid var(--oro);
+  padding: 4px 14px;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+}
+
+.hero__title {
+  font-family: var(--fuente-titulo);
+  line-height: 0.9;
+  color: var(--oro);
+  letter-spacing: -2px;
+}
+
+.hero__sub {
+  margin-top: 0.75rem;
+  font-size: 15px;
+  color: var(--blanco-muted);
+  letter-spacing: 0.05em;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.contenedor {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+/*FORMULARIO */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ── SECCIÓN ── */
+.seccion {
+  background: var(--gris-card);
+  border: 1px solid var(--gris-borde);
+  border-radius: var(--radio-lg);
+  padding: 1.75rem;
+}
+
+.seccion__titulo {
+  font-family: var(--fuente-titulo);
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  color: var(--blanco);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+/* Número de sección en dorado */
+.seccion__num {
+  font-family: var(--fuente-cuerpo);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--oro);
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.3);
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+}
+
+/* ── GRUPOS DE CAMPOS ── */
+.campo-grupo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* En pantallas pequeñas, columna única */
+@media (max-width: 520px) {
+  .campo-grupo {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── CAMPO INDIVIDUAL ── */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  /* Animación de aparición cuando se muestra dinámicamente */
+  animation: aparecer var(--transicion) both;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── LABEL ── */
+.campo__label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blanco-muted);
+}
+
+/* ── INPUT DE TEXTO / NÚMERO ── */
+.campo__input {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--oscuro);
+  border: 1px solid var(--gris-borde);
+  border-radius: var(--radio);
+  color: var(--blanco);
+  font-family: var(--fuente-cuerpo);
+  font-size: 15px;
+  transition: border-color var(--transicion), box-shadow var(--transicion);
+  outline: none;
+  -moz-appearance: textfield; /* quita flechas en Firefox */
+}
+
+/* Quita flechas en Chrome/Safari */
+.campo__input::-webkit-outer-spin-button,
+.campo__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.campo__input::placeholder {
+  color: #484848;
+}
+
+/* ── SELECT ── */
+.campo__select {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--oscuro);
+  border: 1px solid var(--gris-borde);
+  border-radius: var(--radio);
+  color: var(--blanco);
+  font-family: var(--fuente-cuerpo);
+  font-size: 15px;
+  cursor: pointer;
+  transition: border-color var(--transicion), box-shadow var(--transicion);
+  outline: none;
+  /* Flecha personalizada con SVG inline */
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a0a0a0' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+/* Estado focus compartido para inputs y selects */
+.campo__input:focus,
+.campo__select:focus {
+  border-color: var(--oro);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
+}
+
+/* Estado de error (se agrega por JS) */
+.campo__input.error,
+.campo__select.error {
+  border-color: var(--rojo);
+  box-shadow: 0 0 0 3px rgba(214,40,40,0.15);
+}
+
+/* Mensaje de error */
+.campo__error {
+  font-size: 12px;
+  color: #e87070;
+  margin-top: 2px;
+  display: none; /* el JS lo muestra */
+}
+
+.campo__error.visible {
+  display: block;
+}
+
+/* ── CLASE PARA OCULTAR CAMPOS DINÁMICOS ── */
+.oculto {
+  display: none;
+}
+
+/* =============================================
+   CARD DE ASISTENTE (generado por JS)
+   ============================================= */
+.asistente-card {
+  background: var(--oscuro);
+  border: 1px solid var(--gris-borde);
+  border-left: 3px solid var(--oro);  /* acento izquierdo dorado */
+  border-radius: var(--radio);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  animation: aparecer 0.25s both;
+}
+
+.asistente-card h3 {
+  font-family: var(--fuente-titulo);
+  font-size: 18px;
+  color: var(--oro);
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+/* Grid de dos columnas para datos del asistente */
+.asistente-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 480px) {
+  .asistente-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── BOTÓN GENERAR ASISTENTES ── */
+.btn-generar {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 13px;
+  background: transparent;
+  border: 1px dashed var(--oro);
+  border-radius: var(--radio);
+  color: var(--oro);
+  font-family: var(--fuente-cuerpo);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background var(--transicion), color var(--transicion);
+}
+
+.btn-generar:hover {
+  background: rgba(201,168,76,0.1);
+}
+
+/* =============================================
+   RESUMEN DE PRECIO
+   ============================================= */
+.resumen {
+  background: var(--gris-card);
+  border: 1px solid var(--gris-borde);
+  border-top: 2px solid var(--oro);
+  border-radius: var(--radio-lg);
+  padding: 1.5rem 1.75rem;
+  display: none; /* el JS lo muestra cuando hay datos */
+}
+
+.resumen.visible {
+  display: block;
+  animation: aparecer 0.3s both;
+}
+
+.resumen__fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: var(--blanco-muted);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--gris-borde);
+}
+
+.resumen__fila:last-child {
+  border-bottom: none;
+}
+
+.resumen__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--gris-borde);
+}
+
+.resumen__total-label {
+  font-family: var(--fuente-titulo);
+  font-size: 20px;
+  letter-spacing: 0.05em;
+}
+
+.resumen__total-valor {
+  font-family: var(--fuente-titulo);
+  font-size: 28px;
+  color: var(--oro);
+  letter-spacing: 0.02em;
+}
+
+/* =============================================
+   BOTÓN PRINCIPAL DE COMPRA
+   ============================================= */
+.btn-comprar {
+  width: 100%;
+  padding: 18px;
+  background: var(--oro);
+  border: none;
+  border-radius: var(--radio);
+  color: var(--negro);
+  font-family: var(--fuente-titulo);
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: background var(--transicion), transform var(--transicion);
+}
+
+.btn-comprar:hover {
+  background: var(--oro-hover);
+}
+
+.btn-comprar:active {
+  transform: scale(0.98);
+}
+/*PIE DE PÁGINA*/
+.pie {
+  text-align: center;
+  padding: 2rem 1rem;
+  border-top: 1px solid var(--gris-borde);
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+/* CSS Ocultar bloques de estadios */
+.oculto {
+  display: none !important;
+}
+
+/* REGLAS ESPECIALES DE IMPRESIÓN */
+@media print {
+  /* Oculta absolutamente todo el sitio web original */
+  body * {
+    visibility: hidden;
+  }
+  /* Muestra únicamente el contenedor del recibo */
+  #recibo-impresion, #recibo-impresion * {
+    visibility: visible;
+  }
+  #recibo-impresion {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
+
+#ticket-impresion {
+  background-color: #ffffff;
+  font-family: 'Courier New', Courier, monospace; /* Fuente clásica de ticket */
+  color: #111111;
+  max-width: 650px;
+  margin: 30px auto;
+  padding: 10px;
+}
+.ticket-body {
+  border: 3px dashed #111111; /* Línea de corte simulada */
+  padding: 2rem;
+  position: relative;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+/* Encabezado del boleto */
+.ticket-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.ticket-header h1 {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin: 0 0 5px 0;
+  text-transform: uppercase;
+}
+
+.ticket-header p {
+  margin: 0;
+  font-size: 13px;
+  color: #444;
+  letter-spacing: 1px;
+}
+
+.ticket-id {
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+}
+/* Líneas divisorias internas estilo ticket */
+.ticket-divider {
+  border: none;
+  border-top: 2px dashed #111111;
+  margin: 20px 0;
+}
+
+/* Secciones de Información */
+.ticket-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Divide los datos en dos columnas equilibradas */
+  gap: 15px;
+  font-size: 15px;
+}
+
+.ticket-details p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.ticket-details strong {
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #555;
+  display: block; /* Pone la etiqueta arriba del valor */
+}
+
+.ticket-value {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}

@@ -1,0 +1,169 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compra de Tickets – FIFA 2026</title>
+  <link rel="stylesheet" href="estilo.css" />
+  
+</head>
+<body>
+
+
+  <header class="hero">
+
+    <div class="hero__badge">FIFA WORLD CUP</div>
+    <h1 class="hero__title">2026</h1>
+    <p class="hero__sub">Compra tus tickets oficiales</p>
+  </header>
+
+  <main class="contenedor">
+    <form id="formulario" class="formulario" novalidate>
+      <section class="seccion">
+        <h2 class="seccion__titulo">
+          <span class="seccion__num">01</span> Tu compra
+        </h2>
+
+        <div class="campo-grupo">
+          <div class="campo">
+            <label class="campo__label" for="cantidad-tickets">Cantidad de tickets</label>
+            <input class="campo__input" type="number" id="cantidad-tickets" name="cantidad" placeholder="Ej: 2" />
+          </div>
+
+          <div class="campo">
+            <label class="campo__label" for="categoria">Categoría</label>
+            <select class="campo__select" id="categoria" name="categoria">
+              <option value="">Seleccione una categoría</option>
+              <option value="General">General — $150 USD</option>
+              <option value="VIP">VIP — $450 USD</option>
+              <option value="Platinum">Platinum — $900 USD</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion">
+        <h2 class="seccion__titulo">
+          <span class="seccion__num">02</span> Sede del partido
+        </h2>
+
+        <div class="campo">
+          <label class="campo__label" for="pais-anfitrion">País anfitrión</label>
+          <select class="campo__select" id="pais-anfitrion" name="pais">
+            <option value="">Seleccione un país</option>
+            <option value="Canada">Canadá 🇨🇦</option>
+            <option value="Mexico">México 🇲🇽</option>
+            <option value="Estados-Unidos">Estados Unidos 🇺🇸</option>
+          </select>
+        </div>
+
+        <!--
+          Los tres bloques de estadios están ocultos por defecto (clase .oculto).
+          El JS los muestra según el país elegido.
+        -->
+        <div class="campo oculto" id="bloque-Canada">
+          <label class="campo__label" for="estadio-canada">Estadio en Canadá</label>
+          <select class="campo__select" id="estadio-canada" name="estadio-canada">
+            <option value="">Seleccione un estadio</option>
+            <option value="Toronto">Toronto FC Stadium</option>
+            <option value="Vancouver">BC Place – Vancouver</option>
+          </select>
+        </div>
+
+        <div class="campo oculto" id="bloque-Mexico">
+          <label class="campo__label" for="estadio-mexico">Estadio en México</label>
+          <select class="campo__select" id="estadio-mexico" name="estadio-mexico">
+            <option value="">Seleccione un estadio</option>
+            <option value="CDMX">Estadio Azteca – Ciudad de México</option>
+            <option value="Guadalajara">Estadio Akron – Guadalajara</option>
+          </select>
+        </div>
+
+        <div class="campo oculto" id="bloque-Estados-Unidos">
+          <label class="campo__label" for="estadio-usa">Estadio en Estados Unidos</label>
+          <select class="campo__select" id="estadio-usa" name="estadio-usa">
+            <option value="">Seleccione un estadio</option>
+            <option value="Nueva-York">MetLife Stadium – Nueva York</option>
+            <option value="Los-Angeles">SoFi Stadium – Los Ángeles</option>
+            <option value="Chicago">Soldier Field – Chicago</option>
+            <option value="Houston">NRG Stadium – Houston</option>
+            <option value="Atlanta">Mercedes-Benz Stadium – Atlanta</option>
+            <option value="Dallas">AT&T Stadium – Dallas</option>
+          </select>
+        </div>
+      </section>
+
+
+      <section class="seccion">
+        <h2 class="seccion__titulo">
+          <span class="seccion__num">03</span> Fecha del partido
+        </h2>
+      <div class="campo">
+          <label class="campo__label" for="filtro-fase">Filtrar por fase</label>
+          <select class="campo__select" id="filtro-fase" name="filtro-fase">
+            <option value="todos">Todos los partidos</option>
+            <option value="grupos">Fase de grupos (11 Jun – 27 Jun)</option>
+            <option value="ronda32">Ronda de 32 (28 Jun – 3 Jul)</option>
+            <option value="octavos">Octavos de final (4 Jul – 7 Jul)</option>
+            <option value="cuartos">Cuartos de final (9 Jul – 11 Jul)</option>
+            <option value="semis">Semifinales (14–15 Jul)</option>
+            <option value="final">Final (19 Jul)</option>
+          </select>
+        </div>
+      </section>
+
+       <div class="campo">
+          
+          <label class="campo__label" for="partido">Partido</label>
+          <select class="campo__select" id="partido" name="partido">
+            <option value="">— Selecciona un partido —</option>
+          </select>
+        </div>
+
+          </div>
+          <div class="partido-info__fila">
+            <span class="partido-info__label">Fase</span>
+            <span class="partido-info__valor" id="info-fase"></span>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ── SECCIÓN 4: RESUMEN Y ASISTENTES ── -->
+      <section class="seccion">
+        <h2 class="seccion__titulo">
+          <span class="seccion__num">04</span> Datos de asistentes
+        </h2>
+
+        <!-- Aquí el JS inyecta los campos de cada asistente -->
+        <div id="contenedor-asistentes"></div>
+
+        <button type="button" class="btn-generar" id="btn-generar" onclick="obtenerInformacion()">
+          Generar formularios de asistentes
+        </button>
+
+       
+
+         <button type="button" class="btn-print" id="btn-print" onclick="imprimirBoletoNativo()" >
+          Imprimir Boleto Oficial
+         </button>
+
+        <button type="button" class="btn-eliminar" id="btn-eliminar" onclick="eliminarBoletos()">
+        Eliminar boleto
+      </button>
+      </section>
+       <button type="button" class="btn-comprar" id="btn-comprar" onclick="SumadeTicks()">
+          Confirmar compra
+        </button>
+  </main>
+
+  <!-- ===== PIE DE PÁGINA ===== -->
+  <footer class="pie">
+    <p>© FIFA World Cup 2026 — Todos los derechos reservados</p>
+  </footer>
+
+  <script src="ticks.js"></script>
+</body>
+</html>

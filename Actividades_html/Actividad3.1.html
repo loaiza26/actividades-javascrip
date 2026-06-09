@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Función que retorna función</h1>
+    <input type="text" id="factor" placeholder="">
+    <input type="number" name="ingresar_numeros" id="numbers" placeholder="">
+    <button type="button" onclick="calcular()">Calcular</button>
+    <p id="resultado"></p>
+    <script>
+        function crearMultiplicador(factor){
+            //
+            return function(numbers){
+                //
+                return numbers * factor
+                //
+            }
+        } 
+         function calcular(){
+            const factor = Number(document.getElementById("factor").value)
+            //
+            const numbers = Number(document.getElementById("numbers").value)
+            //
+            const multiplicar = crearMultiplicador(factor);
+            //
+            const resultado = multiplicar(numbers)
+            //
+            document.getElementById("resultado").innerText = `El resultado es: ${resultado}`
+            //
+
+         }
+         
+    </script>
+</body>
+</html>

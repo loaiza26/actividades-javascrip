@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Procesamiento de arreglos</h1>
+    
+    <script>
+        const aprendices = [
+             { nombre: 'Carlos', edad: 22, nota: 4.5 },
+             { nombre: 'Laura', edad: 19, nota: 3.8 },
+             { nombre: 'Andrés', edad: 25, nota: 4.9 },
+             { nombre: 'María', edad: 21, nota: 3.2 },
+             { nombre: 'Diego', edad: 23, nota: 4.1 }
+        ];
+        // 6.Obtener un grupo solo con los nombres de los aprendices
+        const Nombres =  aprendices.map( n => n.nombre);
+        //
+        const mostrasrNombres = prompt("¿Desea ver los nombres de los aprendices? (si/no)")
+        //
+        console.log("Nombres de los aprendices:", Nombres);
+        //
+
+        //7.Fltrar a los aprendices con nota mayor o igual a 4.0
+        const AprendicesConBuenasNotas = aprendices.filter( a => a.nota >=4.0);
+        //
+        console.log("Aprendices con una nota mayor o igual a 4.0:" ,AprendicesConBuenasNotas);
+
+        //8.Calcular el promedio de edad de todo el grupo
+        const calcularPromedioEdad = (totalgrupo) => {
+            const sumaEdades = totalgrupo.reduce((totalgrupo, aprendiz) => totalgrupo + aprendiz.edad, 0);
+            return sumaEdades / totalgrupo.length;
+        }
+        const promedioEdad = calcularPromedioEdad(aprendices);
+        console.log("El promedio de edad del grupo es:", promedioEdad);
+         
+        //9.Obtener al aprendiz con la nota más alta
+       let aprendizConMejorNota = aprendices.reduce((mejorNota, aprendiz)=>{
+        return mejorNota.nota > aprendiz.nota ? mejorNota : aprendiz});
+
+       console.log("El aprendiz con la nota más alta es:", aprendizConMejorNota.nombre, "con una nota de", aprendizConMejorNota.nota)
+   </script>
+</body>
+</html>
